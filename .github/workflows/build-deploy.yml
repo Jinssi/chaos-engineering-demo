@@ -571,7 +571,7 @@ jobs:
           azPSVersion: "latest"
           inlineScript: |   
             # Wait for the certificate to be created
-            kubectl wait --for='jsonpath={.status.conditions[?(@.type=="Ready")].status}=True' certificate/tls-secret --timeout=300s
+            kubectl wait --for='jsonpath={.status.conditions[?(@.type=="Ready")].status}'=True certificate/tls-secret --timeout=300s
             # Check that the wait command succeeded
             if ($LASTEXITCODE -ne 0) {
               Write-Error "Timeout occurred while waiting for the certificate to be created."
